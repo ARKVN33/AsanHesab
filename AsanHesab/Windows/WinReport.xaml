@@ -1,0 +1,53 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:persianDateControls="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls" x:Class="AsanHesab.Windows.WinReport"
+        mc:Ignorable="d"
+        Height="535" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None" FontSize="18" ResizeMode="NoResize" FontFamily="B Nazanin" BorderBrush="#FF192D6E" BorderThickness="2">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard >
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:.5" FillBehavior="HoldEnd"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid FlowDirection="RightToLeft" Background="#FFEEEEF2">
+        <Rectangle Stroke="#FF192D6E" StrokeThickness="0" MouseDown="DragMove" Fill="#FFEEEEF2" Height="30" VerticalAlignment="Top" d:IsLocked="True"/>
+        <Label x:Name="LblTitle" Content="گزارشگیری" FontSize="22" FontWeight="Bold" Margin="0" VerticalAlignment="Top" MouseDown="DragMove" Style="{DynamicResource LabelStyle1}" Height="30" HorizontalContentAlignment="Center" d:IsLocked="True"/>
+        <Button x:Name="BtnClose" Content="×" Width="35" Height="30" FontSize="22" FontFamily="Arial" Click="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource ButtonStyle2}" d:IsLocked="True"/>
+        <Button x:Name="BtnMinimize" Content="-" Margin="35,0,0,0" Width="35" Height="30" FontSize="27" FontFamily="Arial" Click="Minimize" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource ButtonStyle3}" d:IsLocked="True"/>
+        <Border BorderBrush="#FF192D6E" BorderThickness="2" Margin="10,35,10,10" CornerRadius="10" d:IsLocked="True"/>
+        <GroupBox Header="نوع تراکنش" FontWeight="Bold" Margin="20,40,20,0" FlowDirection="RightToLeft" BorderBrush="#FF192D6E" Height="70" VerticalAlignment="Top"/>
+
+        <RadioButton x:Name="RdoIncome" GroupName="a" Content="درآمد" IsChecked="True" Margin="48,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="54" Checked="RdoIncome_Checked" TabIndex="1"/>
+        <RadioButton x:Name="RdoFee" GroupName="a" Content="هزینه" Margin="122,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="52" Checked="RdoFee_Checked" TabIndex="2"/>
+        <RadioButton x:Name="RdoFeeIncome" GroupName="a" Content="هردو" Margin="194,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="48" Checked="RdoFeeIncome_Checked" TabIndex="3"/>
+        <GroupBox Header="دسته بندی" FontWeight="Bold" Margin="20,115,20,0" FlowDirection="RightToLeft" BorderBrush="#FF192D6E" Height="70" VerticalAlignment="Top"/>
+        <Label x:Name="LblCategory" Content="همه دسته بندی‌ها" Foreground="Red" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="30,145,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" Width="207" BorderBrush="#FF192D6E" BorderThickness="1"/>
+        <Button x:Name="BtnCategory" Content="+" FontSize="21" FontFamily="Arial" Margin="236,145,30,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="4" BorderBrush="#FF192D6E" Click="BtnCategory_Click"/>
+        <GroupBox Header="حساب" FontWeight="Bold" Margin="20,190,20,0" FlowDirection="RightToLeft" BorderBrush="#FF192D6E" Height="70" VerticalAlignment="Top"/>
+        <Label x:Name="LblAccount" Content="همه حساب‌ها" Foreground="Red" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="30,220,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" Width="207" BorderBrush="#FF192D6E" BorderThickness="1"/>
+        <Button x:Name="BtnAccount" Content="+" FontSize="21" FontFamily="Arial" Margin="236,220,30,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="5" BorderBrush="#FF192D6E" Click="BtnAccount_Click"/>
+        <GroupBox Header="بازه زمانی" FontWeight="Bold" Margin="20,265,20,0" FlowDirection="RightToLeft" BorderBrush="#FF192D6E" Height="140" VerticalAlignment="Top"/>
+
+        <Label Width="58" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Margin="30,295,0,0" Height="30" HorizontalAlignment="Left" Content="از تاریخ:"/>
+        <persianDateControls:PersianDatePicker x:Name="TxtStartDate" Margin="93,295,0,0" VerticalAlignment="Top" Height="30" Width="173" Style="{DynamicResource PersianDatePickerStyle1}" TabIndex="6" PreviewTextInput="DateInput" CommandManager.PreviewExecuted="DisablePasteDate" HorizontalAlignment="Left"/>
+        <Label Width="58" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Margin="30,330,0,0" Height="30" HorizontalAlignment="Left" Content="تا تاریخ:"/>
+        <persianDateControls:PersianDatePicker x:Name="TxtEndDate" Margin="93,330,0,0" VerticalAlignment="Top" Height="30" Width="173" Style="{DynamicResource PersianDatePickerStyle1}" TabIndex="7" PreviewTextInput="DateInput" CommandManager.PreviewExecuted="DisablePasteDate" HorizontalAlignment="Left"/>
+        <Button x:Name="BtnToday" Content="امروز" Margin="30,365,211,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="8" BorderBrush="#FF192D6E" Click="BtnToday_Click" />
+        <Button x:Name="BtnWeek" Content="این هفته" Margin="90,365,151,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="9" BorderBrush="#FF192D6E" Click="BtnWeek_Click"/>
+        <Button x:Name="BtnMonth" Content="این ماه" Margin="150,365,91,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="10" BorderBrush="#FF192D6E" Click="BtnMonth_Click"/>
+        <Button x:Name="BtnYear" Content="امسال" Margin="210,365,30,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="11" BorderBrush="#FF192D6E" Click="BtnYear_Click"/>
+        <Button x:Name="BtnShow" Content="نمایش" Margin="20,480,151,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="12" BorderBrush="#FF192D6E" Click="BtnShow_Click" IsDefault="True"/>
+        <Button x:Name="BtnNew" Content="جدید" Margin="150,480,21,0" Style="{DynamicResource ButtonStyle1}" Height="30" VerticalAlignment="Top" TabIndex="13" BorderBrush="#FF192D6E" Click="BtnNew_Click" />
+        <Label Content="جست و جو در توضیحات" Margin="74,410,75,0" Height="30" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" />
+        <TextBox x:Name="TxtSearch" Height="30" Margin="20,445,21,0" TextWrapping="Wrap"  VerticalAlignment="Top" Style="{DynamicResource TextBoxStyle1}" TabIndex="0" MaxLength="200"/>
+
+    </Grid>
+</Window>

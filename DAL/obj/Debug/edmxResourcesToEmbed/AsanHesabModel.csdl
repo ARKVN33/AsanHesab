@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbAsanHesabModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblBankAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CardNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="InitialBalance" Type="Int64" />
+    <Property Name="BankDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentType_Id" Type="Byte" />
+    <Property Name="FeeCategory_Id" Type="Int32" />
+    <Property Name="BankAccont_Id" Type="Int32" />
+    <Property Name="FeeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FeeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int64" />
+    <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FeeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblFeeCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryGroup_Id" Type="Int32" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblFeeCategoryGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblIncome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentType_Id" Type="Byte" />
+    <Property Name="IncomeCategory_Id" Type="Int32" />
+    <Property Name="BankAccont_Id" Type="Int32" />
+    <Property Name="IncomeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IncomeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int64" />
+    <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IncomeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblIncomeCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryGroup_Id" Type="Int32" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblIncomeCategoryGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblLicense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AppLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="AppVersion" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblPaymentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblPostType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSecurityAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+    <Property Name="Counter" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSecurityQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SecurityQuestion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSundry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="RegisteredAdminPassword" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_PostType_Id" Type="Byte" />
+    <Property Name="User_SecurityQuestion_Id" Type="Byte" />
+    <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPassword" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="UserMobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="UserEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UserAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserRegistrationDate" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+    <Property Name="UserImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="viewFeeInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="PaymentId" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="FeeCategory_Id" Type="Int32" />
+    <Property Name="BankAccont_Id" Type="Int32" />
+    <Property Name="FeeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FeeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int64" />
+    <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FeeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentId" Type="Byte" Nullable="false" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewIncomeInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="PaymentId" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IncomeCategory_Id" Type="Int32" />
+    <Property Name="BankAccont_Id" Type="Int32" />
+    <Property Name="IncomeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IncomeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int64" />
+    <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IncomeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentId" Type="Byte" Nullable="false" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="dbAsanHesabEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblBankAccount" EntityType="Self.tblBankAccount" />
+    <EntitySet Name="tblFee" EntityType="Self.tblFee" />
+    <EntitySet Name="tblFeeCategory" EntityType="Self.tblFeeCategory" />
+    <EntitySet Name="tblFeeCategoryGroup" EntityType="Self.tblFeeCategoryGroup" />
+    <EntitySet Name="tblIncome" EntityType="Self.tblIncome" />
+    <EntitySet Name="tblIncomeCategory" EntityType="Self.tblIncomeCategory" />
+    <EntitySet Name="tblIncomeCategoryGroup" EntityType="Self.tblIncomeCategoryGroup" />
+    <EntitySet Name="tblLicense" EntityType="Self.tblLicense" />
+    <EntitySet Name="tblPaymentType" EntityType="Self.tblPaymentType" />
+    <EntitySet Name="tblPostType" EntityType="Self.tblPostType" />
+    <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" />
+    <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" />
+    <EntitySet Name="tblSundry" EntityType="Self.tblSundry" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+    <EntitySet Name="viewFeeInfo" EntityType="Self.viewFeeInfo" />
+    <EntitySet Name="viewIncomeInfo" EntityType="Self.viewIncomeInfo" />
+    <FunctionImport Name="spSelectFeeInfo" ReturnType="Collection(dbAsanHesabModel.spSelectFeeInfo_Result)" />
+    <FunctionImport Name="spSelectIncomeInfo" ReturnType="Collection(dbAsanHesabModel.spSelectIncomeInfo_Result)" />
+  </EntityContainer>
+  <ComplexType Name="spSelectFeeInfo_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="FeeCategory_Id" Nullable="true" />
+    <Property Type="Int32" Name="BankAccont_Id" Nullable="true" />
+    <Property Type="String" Name="FeeDate" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FeeTime" Nullable="true" MaxLength="8" />
+    <Property Type="Int64" Name="Amount" Nullable="true" />
+    <Property Type="String" Name="ReceiptNumber" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FeeDescription" Nullable="true" />
+    <Property Type="Byte" Name="PaymentId" Nullable="false" />
+    <Property Type="String" Name="BankName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="203" />
+  </ComplexType>
+  <ComplexType Name="spSelectIncomeInfo_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IncomeCategory_Id" Nullable="true" />
+    <Property Type="Int32" Name="BankAccont_Id" Nullable="true" />
+    <Property Type="String" Name="IncomeDate" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="IncomeTime" Nullable="true" MaxLength="8" />
+    <Property Type="Int64" Name="Amount" Nullable="true" />
+    <Property Type="String" Name="ReceiptNumber" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="IncomeDescription" Nullable="true" />
+    <Property Type="Byte" Name="PaymentId" Nullable="false" />
+    <Property Type="String" Name="BankName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="203" />
+  </ComplexType>
+</Schema>

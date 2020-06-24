@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbAsanHesabModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblBankAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="CardNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="InitialBalance" Type="bigint" />
+          <Property Name="BankDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblFee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType_Id" Type="tinyint" />
+          <Property Name="FeeCategory_Id" Type="int" />
+          <Property Name="BankAccont_Id" Type="int" />
+          <Property Name="FeeDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="FeeTime" Type="nvarchar" MaxLength="8" />
+          <Property Name="Amount" Type="bigint" />
+          <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="FeeDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblFeeCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryGroup_Id" Type="int" />
+          <Property Name="Category" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblFeeCategoryGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryGroup" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblIncome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType_Id" Type="tinyint" />
+          <Property Name="IncomeCategory_Id" Type="int" />
+          <Property Name="BankAccont_Id" Type="int" />
+          <Property Name="IncomeDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="IncomeTime" Type="nvarchar" MaxLength="8" />
+          <Property Name="Amount" Type="bigint" />
+          <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="IncomeDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblIncomeCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryGroup_Id" Type="int" />
+          <Property Name="Category" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblIncomeCategoryGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryGroup" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblLicense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AppLicense" Type="nvarchar" MaxLength="40" />
+          <Property Name="AppVersion" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="tblPaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPostType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSecurityAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="19" />
+          <Property Name="Counter" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblSecurityQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SecurityQuestion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblSundry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RegisteredAdminPassword" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_PostType_Id" Type="tinyint" />
+          <Property Name="User_SecurityQuestion_Id" Type="tinyint" />
+          <Property Name="UserFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="60" />
+          <Property Name="UserMobileNumber" Type="nvarchar" MaxLength="11" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserAnswer" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserRegistrationDate" Type="nvarchar" MaxLength="19" />
+          <Property Name="UserImage" Type="nvarchar(max)" />
+          <Property Name="UserDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbAsanHesab.dbo.viewFeeInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewFeeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PaymentId" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FeeCategory_Id" Type="int" />
+          <Property Name="BankAccont_Id" Type="int" />
+          <Property Name="FeeDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="FeeTime" Type="nvarchar" MaxLength="8" />
+          <Property Name="Amount" Type="bigint" />
+          <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="FeeDescription" Type="nvarchar(max)" />
+          <Property Name="PaymentId" Type="tinyint" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="203" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbAsanHesab.dbo.viewIncomeInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewIncomeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PaymentId" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IncomeCategory_Id" Type="int" />
+          <Property Name="BankAccont_Id" Type="int" />
+          <Property Name="IncomeDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="IncomeTime" Type="nvarchar" MaxLength="8" />
+          <Property Name="Amount" Type="bigint" />
+          <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="IncomeDescription" Type="nvarchar(max)" />
+          <Property Name="PaymentId" Type="tinyint" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="203" Nullable="false" />
+        </EntityType>
+        <Function Name="spSelectFeeInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spSelectIncomeInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="dbAsanHesabModelStoreContainer">
+          <EntitySet Name="tblBankAccount" EntityType="Self.tblBankAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFee" EntityType="Self.tblFee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFeeCategory" EntityType="Self.tblFeeCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFeeCategoryGroup" EntityType="Self.tblFeeCategoryGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIncome" EntityType="Self.tblIncome" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIncomeCategory" EntityType="Self.tblIncomeCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIncomeCategoryGroup" EntityType="Self.tblIncomeCategoryGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLicense" EntityType="Self.tblLicense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPaymentType" EntityType="Self.tblPaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPostType" EntityType="Self.tblPostType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSundry" EntityType="Self.tblSundry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viewFeeInfo" EntityType="Self.viewFeeInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewFeeInfo].[Id] AS [Id], 
+    [viewFeeInfo].[FeeCategory_Id] AS [FeeCategory_Id], 
+    [viewFeeInfo].[BankAccont_Id] AS [BankAccont_Id], 
+    [viewFeeInfo].[FeeDate] AS [FeeDate], 
+    [viewFeeInfo].[FeeTime] AS [FeeTime], 
+    [viewFeeInfo].[Amount] AS [Amount], 
+    [viewFeeInfo].[ReceiptNumber] AS [ReceiptNumber], 
+    [viewFeeInfo].[FeeDescription] AS [FeeDescription], 
+    [viewFeeInfo].[PaymentId] AS [PaymentId], 
+    [viewFeeInfo].[BankName] AS [BankName], 
+    [viewFeeInfo].[Category] AS [Category]
+    FROM [dbo].[viewFeeInfo] AS [viewFeeInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewIncomeInfo" EntityType="Self.viewIncomeInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewIncomeInfo].[Id] AS [Id], 
+    [viewIncomeInfo].[IncomeCategory_Id] AS [IncomeCategory_Id], 
+    [viewIncomeInfo].[BankAccont_Id] AS [BankAccont_Id], 
+    [viewIncomeInfo].[IncomeDate] AS [IncomeDate], 
+    [viewIncomeInfo].[IncomeTime] AS [IncomeTime], 
+    [viewIncomeInfo].[Amount] AS [Amount], 
+    [viewIncomeInfo].[ReceiptNumber] AS [ReceiptNumber], 
+    [viewIncomeInfo].[IncomeDescription] AS [IncomeDescription], 
+    [viewIncomeInfo].[PaymentId] AS [PaymentId], 
+    [viewIncomeInfo].[BankName] AS [BankName], 
+    [viewIncomeInfo].[Category] AS [Category]
+    FROM [dbo].[viewIncomeInfo] AS [viewIncomeInfo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbAsanHesabModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblBankAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CardNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="InitialBalance" Type="Int64" />
+          <Property Name="BankDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblFee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType_Id" Type="Byte" />
+          <Property Name="FeeCategory_Id" Type="Int32" />
+          <Property Name="BankAccont_Id" Type="Int32" />
+          <Property Name="FeeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FeeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int64" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FeeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblFeeCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryGroup_Id" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblFeeCategoryGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblIncome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType_Id" Type="Byte" />
+          <Property Name="IncomeCategory_Id" Type="Int32" />
+          <Property Name="BankAccont_Id" Type="Int32" />
+          <Property Name="IncomeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IncomeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int64" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IncomeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblIncomeCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryGroup_Id" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblIncomeCategoryGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblLicense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AppLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="AppVersion" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPostType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSecurityAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+          <Property Name="Counter" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSecurityQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SecurityQuestion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSundry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RegisteredAdminPassword" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_PostType_Id" Type="Byte" />
+          <Property Name="User_SecurityQuestion_Id" Type="Byte" />
+          <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserRegistrationDate" Type="String" MaxLength="19" FixedLength="false" Unicode="true" />
+          <Property Name="UserImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="viewFeeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PaymentId" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FeeCategory_Id" Type="Int32" />
+          <Property Name="BankAccont_Id" Type="Int32" />
+          <Property Name="FeeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FeeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int64" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FeeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentId" Type="Byte" Nullable="false" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="viewIncomeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PaymentId" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IncomeCategory_Id" Type="Int32" />
+          <Property Name="BankAccont_Id" Type="Int32" />
+          <Property Name="IncomeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IncomeTime" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int64" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IncomeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentId" Type="Byte" Nullable="false" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbAsanHesabEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblBankAccount" EntityType="Self.tblBankAccount" />
+          <EntitySet Name="tblFee" EntityType="Self.tblFee" />
+          <EntitySet Name="tblFeeCategory" EntityType="Self.tblFeeCategory" />
+          <EntitySet Name="tblFeeCategoryGroup" EntityType="Self.tblFeeCategoryGroup" />
+          <EntitySet Name="tblIncome" EntityType="Self.tblIncome" />
+          <EntitySet Name="tblIncomeCategory" EntityType="Self.tblIncomeCategory" />
+          <EntitySet Name="tblIncomeCategoryGroup" EntityType="Self.tblIncomeCategoryGroup" />
+          <EntitySet Name="tblLicense" EntityType="Self.tblLicense" />
+          <EntitySet Name="tblPaymentType" EntityType="Self.tblPaymentType" />
+          <EntitySet Name="tblPostType" EntityType="Self.tblPostType" />
+          <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" />
+          <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" />
+          <EntitySet Name="tblSundry" EntityType="Self.tblSundry" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="viewFeeInfo" EntityType="Self.viewFeeInfo" />
+          <EntitySet Name="viewIncomeInfo" EntityType="Self.viewIncomeInfo" />
+          <FunctionImport Name="spSelectFeeInfo" ReturnType="Collection(dbAsanHesabModel.spSelectFeeInfo_Result)" />
+          <FunctionImport Name="spSelectIncomeInfo" ReturnType="Collection(dbAsanHesabModel.spSelectIncomeInfo_Result)" />
+        </EntityContainer>
+        <ComplexType Name="spSelectFeeInfo_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="FeeCategory_Id" Nullable="true" />
+          <Property Type="Int32" Name="BankAccont_Id" Nullable="true" />
+          <Property Type="String" Name="FeeDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="FeeTime" Nullable="true" MaxLength="8" />
+          <Property Type="Int64" Name="Amount" Nullable="true" />
+          <Property Type="String" Name="ReceiptNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FeeDescription" Nullable="true" />
+          <Property Type="Byte" Name="PaymentId" Nullable="false" />
+          <Property Type="String" Name="BankName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="203" />
+        </ComplexType>
+        <ComplexType Name="spSelectIncomeInfo_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IncomeCategory_Id" Nullable="true" />
+          <Property Type="Int32" Name="BankAccont_Id" Nullable="true" />
+          <Property Type="String" Name="IncomeDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="IncomeTime" Nullable="true" MaxLength="8" />
+          <Property Type="Int64" Name="Amount" Nullable="true" />
+          <Property Type="String" Name="ReceiptNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="IncomeDescription" Nullable="true" />
+          <Property Type="Byte" Name="PaymentId" Nullable="false" />
+          <Property Type="String" Name="BankName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="203" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbAsanHesabModelStoreContainer" CdmEntityContainer="dbAsanHesabEntities">
+          <EntitySetMapping Name="tblBankAccount">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblBankAccount">
+              <MappingFragment StoreEntitySet="tblBankAccount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="AccountNum" ColumnName="AccountNum" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="InitialBalance" ColumnName="InitialBalance" />
+                <ScalarProperty Name="BankDescription" ColumnName="BankDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFee">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblFee">
+              <MappingFragment StoreEntitySet="tblFee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PaymentType_Id" ColumnName="PaymentType_Id" />
+                <ScalarProperty Name="FeeCategory_Id" ColumnName="FeeCategory_Id" />
+                <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+                <ScalarProperty Name="FeeDate" ColumnName="FeeDate" />
+                <ScalarProperty Name="FeeTime" ColumnName="FeeTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="FeeDescription" ColumnName="FeeDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFeeCategory">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblFeeCategory">
+              <MappingFragment StoreEntitySet="tblFeeCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryGroup_Id" ColumnName="CategoryGroup_Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFeeCategoryGroup">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblFeeCategoryGroup">
+              <MappingFragment StoreEntitySet="tblFeeCategoryGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryGroup" ColumnName="CategoryGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIncome">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblIncome">
+              <MappingFragment StoreEntitySet="tblIncome">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PaymentType_Id" ColumnName="PaymentType_Id" />
+                <ScalarProperty Name="IncomeCategory_Id" ColumnName="IncomeCategory_Id" />
+                <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+                <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+                <ScalarProperty Name="IncomeTime" ColumnName="IncomeTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="IncomeDescription" ColumnName="IncomeDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIncomeCategory">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblIncomeCategory">
+              <MappingFragment StoreEntitySet="tblIncomeCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryGroup_Id" ColumnName="CategoryGroup_Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIncomeCategoryGroup">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblIncomeCategoryGroup">
+              <MappingFragment StoreEntitySet="tblIncomeCategoryGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryGroup" ColumnName="CategoryGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLicense">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblLicense">
+              <MappingFragment StoreEntitySet="tblLicense">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppLicense" ColumnName="AppLicense" />
+                <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPaymentType">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblPaymentType">
+              <MappingFragment StoreEntitySet="tblPaymentType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPostType">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblPostType">
+              <MappingFragment StoreEntitySet="tblPostType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PostType" ColumnName="PostType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSecurityAccess">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblSecurityAccess">
+              <MappingFragment StoreEntitySet="tblSecurityAccess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSecurityQuestion">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblSecurityQuestion">
+              <MappingFragment StoreEntitySet="tblSecurityQuestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSundry">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblSundry">
+              <MappingFragment StoreEntitySet="tblSundry">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RegisteredAdminPassword" ColumnName="RegisteredAdminPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_PostType_Id" ColumnName="User_PostType_Id" />
+                <ScalarProperty Name="User_SecurityQuestion_Id" ColumnName="User_SecurityQuestion_Id" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserMobileNumber" ColumnName="UserMobileNumber" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserAnswer" ColumnName="UserAnswer" />
+                <ScalarProperty Name="UserRegistrationDate" ColumnName="UserRegistrationDate" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="UserDescription" ColumnName="UserDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewFeeInfo">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.viewFeeInfo">
+              <MappingFragment StoreEntitySet="viewFeeInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FeeCategory_Id" ColumnName="FeeCategory_Id" />
+                <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+                <ScalarProperty Name="FeeDate" ColumnName="FeeDate" />
+                <ScalarProperty Name="FeeTime" ColumnName="FeeTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="FeeDescription" ColumnName="FeeDescription" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewIncomeInfo">
+            <EntityTypeMapping TypeName="dbAsanHesabModel.viewIncomeInfo">
+              <MappingFragment StoreEntitySet="viewIncomeInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IncomeCategory_Id" ColumnName="IncomeCategory_Id" />
+                <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+                <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+                <ScalarProperty Name="IncomeTime" ColumnName="IncomeTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="IncomeDescription" ColumnName="IncomeDescription" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spSelectFeeInfo" FunctionName="dbAsanHesabModel.Store.spSelectFeeInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbAsanHesabModel.spSelectFeeInfo_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FeeCategory_Id" ColumnName="FeeCategory_Id" />
+                <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+                <ScalarProperty Name="FeeDate" ColumnName="FeeDate" />
+                <ScalarProperty Name="FeeTime" ColumnName="FeeTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="FeeDescription" ColumnName="FeeDescription" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectIncomeInfo" FunctionName="dbAsanHesabModel.Store.spSelectIncomeInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbAsanHesabModel.spSelectIncomeInfo_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IncomeCategory_Id" ColumnName="IncomeCategory_Id" />
+                <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+                <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+                <ScalarProperty Name="IncomeTime" ColumnName="IncomeTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="IncomeDescription" ColumnName="IncomeDescription" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

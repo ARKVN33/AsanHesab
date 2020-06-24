@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbAsanHesabModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblBankAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountNum" Type="nvarchar" MaxLength="20" />
+    <Property Name="CardNum" Type="nvarchar" MaxLength="20" />
+    <Property Name="InitialBalance" Type="bigint" />
+    <Property Name="BankDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentType_Id" Type="tinyint" />
+    <Property Name="FeeCategory_Id" Type="int" />
+    <Property Name="BankAccont_Id" Type="int" />
+    <Property Name="FeeDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="FeeTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="Amount" Type="bigint" />
+    <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="FeeDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblFeeCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryGroup_Id" Type="int" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblFeeCategoryGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryGroup" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblIncome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentType_Id" Type="tinyint" />
+    <Property Name="IncomeCategory_Id" Type="int" />
+    <Property Name="BankAccont_Id" Type="int" />
+    <Property Name="IncomeDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="IncomeTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="Amount" Type="bigint" />
+    <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="IncomeDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblIncomeCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryGroup_Id" Type="int" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblIncomeCategoryGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryGroup" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblLicense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AppLicense" Type="nvarchar" MaxLength="40" />
+    <Property Name="AppVersion" Type="nvarchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="tblPaymentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblPostType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblSecurityAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Time" Type="nvarchar" MaxLength="19" />
+    <Property Name="Counter" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblSecurityQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityQuestion" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tblSundry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RegisteredAdminPassword" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_PostType_Id" Type="tinyint" />
+    <Property Name="User_SecurityQuestion_Id" Type="tinyint" />
+    <Property Name="UserFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="60" />
+    <Property Name="UserMobileNumber" Type="nvarchar" MaxLength="11" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserAnswer" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserRegistrationDate" Type="nvarchar" MaxLength="19" />
+    <Property Name="UserImage" Type="nvarchar(max)" />
+    <Property Name="UserDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbAsanHesab.dbo.viewFeeInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewFeeInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="PaymentId" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FeeCategory_Id" Type="int" />
+    <Property Name="BankAccont_Id" Type="int" />
+    <Property Name="FeeDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="FeeTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="Amount" Type="bigint" />
+    <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="FeeDescription" Type="nvarchar(max)" />
+    <Property Name="PaymentId" Type="tinyint" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category" Type="nvarchar" MaxLength="203" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbAsanHesab.dbo.viewIncomeInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewIncomeInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="PaymentId" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IncomeCategory_Id" Type="int" />
+    <Property Name="BankAccont_Id" Type="int" />
+    <Property Name="IncomeDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="IncomeTime" Type="nvarchar" MaxLength="8" />
+    <Property Name="Amount" Type="bigint" />
+    <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="IncomeDescription" Type="nvarchar(max)" />
+    <Property Name="PaymentId" Type="tinyint" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category" Type="nvarchar" MaxLength="203" Nullable="false" />
+  </EntityType>
+  <Function Name="spSelectFeeInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spSelectIncomeInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="dbAsanHesabModelStoreContainer">
+    <EntitySet Name="tblBankAccount" EntityType="Self.tblBankAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFee" EntityType="Self.tblFee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFeeCategory" EntityType="Self.tblFeeCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFeeCategoryGroup" EntityType="Self.tblFeeCategoryGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIncome" EntityType="Self.tblIncome" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIncomeCategory" EntityType="Self.tblIncomeCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIncomeCategoryGroup" EntityType="Self.tblIncomeCategoryGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLicense" EntityType="Self.tblLicense" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPaymentType" EntityType="Self.tblPaymentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPostType" EntityType="Self.tblPostType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSecurityAccess" EntityType="Self.tblSecurityAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSecurityQuestion" EntityType="Self.tblSecurityQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSundry" EntityType="Self.tblSundry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="viewFeeInfo" EntityType="Self.viewFeeInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [viewFeeInfo].[Id] AS [Id], 
+    [viewFeeInfo].[FeeCategory_Id] AS [FeeCategory_Id], 
+    [viewFeeInfo].[BankAccont_Id] AS [BankAccont_Id], 
+    [viewFeeInfo].[FeeDate] AS [FeeDate], 
+    [viewFeeInfo].[FeeTime] AS [FeeTime], 
+    [viewFeeInfo].[Amount] AS [Amount], 
+    [viewFeeInfo].[ReceiptNumber] AS [ReceiptNumber], 
+    [viewFeeInfo].[FeeDescription] AS [FeeDescription], 
+    [viewFeeInfo].[PaymentId] AS [PaymentId], 
+    [viewFeeInfo].[BankName] AS [BankName], 
+    [viewFeeInfo].[Category] AS [Category]
+    FROM [dbo].[viewFeeInfo] AS [viewFeeInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewIncomeInfo" EntityType="Self.viewIncomeInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [viewIncomeInfo].[Id] AS [Id], 
+    [viewIncomeInfo].[IncomeCategory_Id] AS [IncomeCategory_Id], 
+    [viewIncomeInfo].[BankAccont_Id] AS [BankAccont_Id], 
+    [viewIncomeInfo].[IncomeDate] AS [IncomeDate], 
+    [viewIncomeInfo].[IncomeTime] AS [IncomeTime], 
+    [viewIncomeInfo].[Amount] AS [Amount], 
+    [viewIncomeInfo].[ReceiptNumber] AS [ReceiptNumber], 
+    [viewIncomeInfo].[IncomeDescription] AS [IncomeDescription], 
+    [viewIncomeInfo].[PaymentId] AS [PaymentId], 
+    [viewIncomeInfo].[BankName] AS [BankName], 
+    [viewIncomeInfo].[Category] AS [Category]
+    FROM [dbo].[viewIncomeInfo] AS [viewIncomeInfo]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

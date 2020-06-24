@@ -1,0 +1,124 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:custom="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon"
+    xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    x:Class="AsanHesab.Windows.MainWindow"
+    mc:Ignorable="d"
+    Title="MainWindow" Height="660" Width="1000" WindowStartupLocation="CenterScreen" FontSize="20" FontFamily="B Nazanin" Closing="Window_Closing" ResizeMode="NoResize" Loaded="Window_Loaded">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard >
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1" FillBehavior="HoldEnd"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid FlowDirection="RightToLeft">
+        <custom:Ribbon VerticalAlignment="Top" FlowDirection="RightToLeft">
+            <custom:Ribbon.ApplicationMenu>
+                <custom:RibbonApplicationMenu>
+                    <custom:RibbonApplicationMenuItem Header="اطلاعات کاربری" x:Name="PerInfo" ImageSource="../Icon/UserInfo.png" Tag="1000"/>
+                    <custom:RibbonApplicationMenuItem Header="تنظیمات" x:Name="Setting" ImageSource="../Icon/Setting.png"/>
+                    <custom:RibbonApplicationMenuItem Header="پشتیبان گیری از اطلاعات" x:Name="BackUp" ImageSource="../Icon/Backup.png" Click="BackUp_Click"/>
+                    <custom:RibbonApplicationMenuItem Header="مشاهده پشتیبان های خودکار" x:Name="AutoBackUp" ImageSource="../Icon/Backup.png" Click="AutoBackUp_Click" />
+                    <custom:RibbonApplicationMenuItem Header="بازنشانی فایل پشتیبان" x:Name="Restore" ImageSource="../Icon/Restore.png" Click="Restore_Click"/>
+                    <custom:RibbonApplicationMenuItem Header="بروزرسانی نرم افزار" x:Name="Update" ImageSource="../Icon/Update.png"/>
+                    <custom:RibbonApplicationMenuItem Header="تغییر کلمه عبور" x:Name="ChangePassword" ImageSource="../Icon/ChangePassword.png" Click="ChangePassword_Click" />
+                    <custom:RibbonApplicationMenuItem Header="راهنما" x:Name="Help" ImageSource="../Icon/Help.png"/>
+                    <custom:RibbonApplicationMenuItem Header="درباره ی ما" x:Name="AboutUs" ImageSource="../Icon/AboutUs.png"/>
+                    <custom:RibbonApplicationMenuItem Header="خروج" x:Name="Exit" ImageSource="../Icon/Exit.png" Click="Close"/>
+                </custom:RibbonApplicationMenu>
+            </custom:Ribbon.ApplicationMenu>
+            <custom:RibbonTab Header="درآمد/هزینه">
+                <custom:RibbonGroup Header="ثبت درآمد">
+                    <custom:RibbonButton x:Name="BtnIncome" Label="درآمد" LargeImageSource="../Icon/FeeIncome.png" Height="Auto" Width="65" Click="BtnIncome_Click"/>
+                </custom:RibbonGroup>
+                <custom:RibbonGroup Header="ثبت هزینه">
+                    <custom:RibbonButton x:Name="BtnFee" Label="هزینه" LargeImageSource="../Icon/ReceiveMoney.png" Height="Auto" Width="65" Click="BtnFee_Click"/>
+                </custom:RibbonGroup>
+            </custom:RibbonTab>
+            <custom:RibbonTab Header="مدیریت حساب‌ها">
+                <custom:RibbonGroup Header="حساب‌های بانکی">
+                    <custom:RibbonButton x:Name="BtnBankAccount" Label="ثبت حساب" LargeImageSource="../Icon/BankAccount.png" Height="Auto" Width="65" Click="BtnBankAccount_Click"/>
+                </custom:RibbonGroup>
+            </custom:RibbonTab>
+            <custom:RibbonTab Header="دسته‌بندی‌ها">
+                <custom:RibbonGroup Header="ثبت دسته‌بندی">
+                    <custom:RibbonButton x:Name="BtnIncomeCategory" Label="درآمد" LargeImageSource="../Icon/FeeIncome.png" Height="Auto" Width="65" Click="BtnIncomeCategory_Click"/>
+                </custom:RibbonGroup>
+                <custom:RibbonGroup Header="ثبت دسته‌بندی">
+                    <custom:RibbonButton x:Name="BtnFeeCategory" Label="هزینه" LargeImageSource="../Icon/ReceiveMoney.png" Height="Auto" Width="65" Click="BtnFeeCategory_Click"/>
+                </custom:RibbonGroup>
+            </custom:RibbonTab>
+            <custom:RibbonTab Header="گزارشات">
+                <custom:RibbonGroup Header="گزارش کل">
+                    <custom:RibbonButton x:Name="BtndbAsanHesabInfo" Label="نمایش" LargeImageSource="../Icon/Summary.png" Height="Auto" Width="65" Click="BtndbAsanHesabInfo_Click"/>
+                </custom:RibbonGroup>
+            </custom:RibbonTab>
+
+        </custom:Ribbon>
+        <Rectangle Height="50" Margin="0,580,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="994">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF67A9F3" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <GroupBox Header="هزینه‌ها" FontWeight="Bold" Margin="10,145,0,0" FlowDirection="RightToLeft" BorderBrush="#FF192D6E" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Width="318"/>
+
+        <Label Content="امروز" HorizontalAlignment="Left" Margin="20,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="نسخه خانگی" HorizontalAlignment="Left" Margin="255,0,0,10" Style="{DynamicResource LabelStyle1}" Width="245" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" VerticalAlignment="Bottom"/>
+        <Label Content="نرم افزار حسابداری آسان حساب" HorizontalAlignment="Left" Margin="10,0,0,10" Style="{DynamicResource LabelStyle1}" Width="245" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" VerticalAlignment="Bottom"/>
+        <Label Content="نگارش: 1.0.0" HorizontalAlignment="Left" Margin="500,0,0,10" Style="{DynamicResource LabelStyle1}" Width="245" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" VerticalAlignment="Bottom"/>
+        <Label  Content="کاربر: مدیریت" HorizontalAlignment="Left" Margin="745,0,0,10" VerticalAlignment="Bottom" Height="30" Style="{DynamicResource LabelStyle1}" Width="239" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="این هفته" HorizontalAlignment="Left" Margin="20,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="این ماه" HorizontalAlignment="Left" Margin="20,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="امسال" HorizontalAlignment="Left" Margin="20,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label x:Name="LblFeeToday" HorizontalAlignment="Left" Margin="85,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Red"/>
+        <Label Content="ریال" Margin="268,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="LblFeeWeek" HorizontalAlignment="Left" Margin="85,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Red"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="268,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <Label x:Name="LblFeeMonth" HorizontalAlignment="Left" Margin="85,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Red"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="268,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <Label x:Name="LblFeeYear" HorizontalAlignment="Left" Margin="85,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Red"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="268,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <GroupBox Header="درآمدها" FontWeight="Bold" Margin="333,145,0,0" FlowDirection="RightToLeft" BorderBrush="#FF192D6E" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Width="318"/>
+        <Label Content="امروز" HorizontalAlignment="Left" Margin="343,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="این هفته" HorizontalAlignment="Left" Margin="343,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="این ماه" HorizontalAlignment="Left" Margin="343,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="امسال" HorizontalAlignment="Left" Margin="343,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label x:Name="LblIncomeToday" HorizontalAlignment="Left" Margin="408,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Green"/>
+        <Label Content="ریال" Margin="591,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="LblIncomeWeek" HorizontalAlignment="Left" Margin="408,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Green"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="591,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <Label x:Name="LblIncomeMonth" HorizontalAlignment="Left" Margin="408,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Green"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="591,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <Label x:Name="LblIncomeYear" HorizontalAlignment="Left" Margin="408,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Green"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="591,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <GroupBox Header="موجودی کل" FontWeight="Bold" Margin="656,145,0,0" FlowDirection="RightToLeft" BorderBrush="#FF192D6E" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Width="318"/>
+        <Label Content="درآمد" HorizontalAlignment="Left" Margin="666,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="هزینه" HorizontalAlignment="Left" Margin="666,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label Content="کل" HorizontalAlignment="Left" Margin="666,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="65"/>
+        <Label x:Name="LblTotalIncome" HorizontalAlignment="Left" Margin="731,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="182" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Green"/>
+        <Label Content="ریال" Margin="913,174,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="LblTotalFee" HorizontalAlignment="Left" Margin="731,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="182" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Red"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="913,204,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <Label x:Name="LblTotal" HorizontalAlignment="Left" Margin="731,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="182" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="913,264,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+        <chartingToolkit:Chart Name="CChart" Margin="10,310,10,0" VerticalAlignment="Top" Height="265">
+            <chartingToolkit:ColumnSeries DependentValuePath="Value" Title="موجودی" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True">
+
+            </chartingToolkit:ColumnSeries>
+        </chartingToolkit:Chart>
+        <Label Content="اولیه حساب‌ها" HorizontalAlignment="Left" Margin="666,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="94"/>
+        <Label x:Name="LblTotalAccount" HorizontalAlignment="Left" Margin="760,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="153" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="Green"/>
+        <Label Content="ریال" HorizontalAlignment="Left" Margin="913,234,0,0" VerticalAlignment="Top" Height="30" Style="{DynamicResource LabelStyle1}" BorderBrush="#FF192D6E" BorderThickness="0,0,0,1" Width="40"/>
+    </Grid>
+</Window>

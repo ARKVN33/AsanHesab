@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbAsanHesabModelStoreContainer" CdmEntityContainer="dbAsanHesabEntities">
+    <EntitySetMapping Name="tblBankAccount">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblBankAccount">
+        <MappingFragment StoreEntitySet="tblBankAccount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="AccountNum" ColumnName="AccountNum" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="InitialBalance" ColumnName="InitialBalance" />
+          <ScalarProperty Name="BankDescription" ColumnName="BankDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFee">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblFee">
+        <MappingFragment StoreEntitySet="tblFee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PaymentType_Id" ColumnName="PaymentType_Id" />
+          <ScalarProperty Name="FeeCategory_Id" ColumnName="FeeCategory_Id" />
+          <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+          <ScalarProperty Name="FeeDate" ColumnName="FeeDate" />
+          <ScalarProperty Name="FeeTime" ColumnName="FeeTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="FeeDescription" ColumnName="FeeDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFeeCategory">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblFeeCategory">
+        <MappingFragment StoreEntitySet="tblFeeCategory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryGroup_Id" ColumnName="CategoryGroup_Id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFeeCategoryGroup">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblFeeCategoryGroup">
+        <MappingFragment StoreEntitySet="tblFeeCategoryGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryGroup" ColumnName="CategoryGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIncome">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblIncome">
+        <MappingFragment StoreEntitySet="tblIncome">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PaymentType_Id" ColumnName="PaymentType_Id" />
+          <ScalarProperty Name="IncomeCategory_Id" ColumnName="IncomeCategory_Id" />
+          <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+          <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+          <ScalarProperty Name="IncomeTime" ColumnName="IncomeTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="IncomeDescription" ColumnName="IncomeDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIncomeCategory">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblIncomeCategory">
+        <MappingFragment StoreEntitySet="tblIncomeCategory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryGroup_Id" ColumnName="CategoryGroup_Id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIncomeCategoryGroup">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblIncomeCategoryGroup">
+        <MappingFragment StoreEntitySet="tblIncomeCategoryGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryGroup" ColumnName="CategoryGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLicense">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblLicense">
+        <MappingFragment StoreEntitySet="tblLicense">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AppLicense" ColumnName="AppLicense" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPaymentType">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblPaymentType">
+        <MappingFragment StoreEntitySet="tblPaymentType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPostType">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblPostType">
+        <MappingFragment StoreEntitySet="tblPostType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PostType" ColumnName="PostType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecurityAccess">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblSecurityAccess">
+        <MappingFragment StoreEntitySet="tblSecurityAccess">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecurityQuestion">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblSecurityQuestion">
+        <MappingFragment StoreEntitySet="tblSecurityQuestion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSundry">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblSundry">
+        <MappingFragment StoreEntitySet="tblSundry">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RegisteredAdminPassword" ColumnName="RegisteredAdminPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUser">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="User_PostType_Id" ColumnName="User_PostType_Id" />
+          <ScalarProperty Name="User_SecurityQuestion_Id" ColumnName="User_SecurityQuestion_Id" />
+          <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+          <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserMobileNumber" ColumnName="UserMobileNumber" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserAnswer" ColumnName="UserAnswer" />
+          <ScalarProperty Name="UserRegistrationDate" ColumnName="UserRegistrationDate" />
+          <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+          <ScalarProperty Name="UserDescription" ColumnName="UserDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewFeeInfo">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.viewFeeInfo">
+        <MappingFragment StoreEntitySet="viewFeeInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FeeCategory_Id" ColumnName="FeeCategory_Id" />
+          <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+          <ScalarProperty Name="FeeDate" ColumnName="FeeDate" />
+          <ScalarProperty Name="FeeTime" ColumnName="FeeTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="FeeDescription" ColumnName="FeeDescription" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewIncomeInfo">
+      <EntityTypeMapping TypeName="dbAsanHesabModel.viewIncomeInfo">
+        <MappingFragment StoreEntitySet="viewIncomeInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IncomeCategory_Id" ColumnName="IncomeCategory_Id" />
+          <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+          <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+          <ScalarProperty Name="IncomeTime" ColumnName="IncomeTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="IncomeDescription" ColumnName="IncomeDescription" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spSelectFeeInfo" FunctionName="dbAsanHesabModel.Store.spSelectFeeInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbAsanHesabModel.spSelectFeeInfo_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FeeCategory_Id" ColumnName="FeeCategory_Id" />
+          <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+          <ScalarProperty Name="FeeDate" ColumnName="FeeDate" />
+          <ScalarProperty Name="FeeTime" ColumnName="FeeTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="FeeDescription" ColumnName="FeeDescription" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSelectIncomeInfo" FunctionName="dbAsanHesabModel.Store.spSelectIncomeInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbAsanHesabModel.spSelectIncomeInfo_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IncomeCategory_Id" ColumnName="IncomeCategory_Id" />
+          <ScalarProperty Name="BankAccont_Id" ColumnName="BankAccont_Id" />
+          <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+          <ScalarProperty Name="IncomeTime" ColumnName="IncomeTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="IncomeDescription" ColumnName="IncomeDescription" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
